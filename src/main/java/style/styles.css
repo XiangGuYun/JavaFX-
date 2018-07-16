@@ -1,0 +1,50 @@
+.root{
+    -fx-font-size: 11pt;
+    -fx-background-image: url(image/three_kindoms.jpg);
+    -fx-background-size: stretch stretch;
+    -fx-background-position: center center;
+}
+
+.label{
+    -fx-text-fill: aliceblue;
+}
+
+.button{
+    -fx-background-color: #000000;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 6;
+}
+/*
+创建一个自定义样式
+ */
+.button-blue{
+    -fx-background-color: #000000;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 6;
+}
+/*
+对指定id的View设置样式
+ */
+#bold-label{
+    -fx-font-weight: bold;
+}
+
+#etUsername{
+    -fx-vgap: 20;
+    -fx-hgap: 20;
+}
+
+/*Flat button example */
+.jfx-button {
+    -jfx-button-type: FLAT;
+    -fx-background-color: white;
+    -fx-text-fill: black;
+}
+
+/*Raised button example */
+.jfx-button {
+    -jfx-button-type: RAISED;
+    -fx-background-color: #000000;
+    -fx-text-fill: white;
+    -fx-font-size: 18;
+}
