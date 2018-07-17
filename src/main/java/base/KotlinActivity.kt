@@ -9,6 +9,7 @@ import javafx.scene.Node
 import javafx.scene.Parent
 import javafx.scene.Scene
 import javafx.scene.control.Label
+import javafx.scene.layout.Region
 import javafx.scene.paint.Color
 import javafx.stage.Screen
 import javafx.stage.Stage
@@ -55,6 +56,10 @@ abstract class KotlinActivity:Application(),ViewHelper,ColorHelper{
         contentView = FXMLLoader.load<Parent>(javaClass.classLoader.getResource("$name.fxml"))
         return Scene(contentView,
                 width.toDouble(),height.toDouble())
+    }
+
+    fun region(name:String): Region {
+        return FXMLLoader.load<Region>(javaClass.classLoader.getResource("$name.fxml"))
     }
 
     fun setStyle(path:String){

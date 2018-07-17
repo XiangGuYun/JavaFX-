@@ -1,67 +1,50 @@
 
 
-import base.AlertDialog
 import com.jfoenix.controls.JFXButton
+import com.jfoenix.controls.JFXDialog
 import com.jfoenix.controls.JFXListView
-import io.netty.bootstrap.Bootstrap
-import io.netty.channel.ChannelInitializer
-import io.netty.channel.nio.NioEventLoopGroup
-import io.netty.channel.socket.SocketChannel
-import io.netty.channel.socket.nio.NioSocketChannel
 import javafx.application.Application
-import javafx.beans.value.ObservableValue
 import javafx.geometry.Pos
+import javafx.scene.control.Label
+import javafx.scene.control.PasswordField
+import javafx.scene.control.ScrollPane
+import javafx.scene.control.TextField
+import javafx.scene.image.Image
+import javafx.scene.layout.StackPane
 import javafx.scene.media.Media
 import javafx.scene.media.MediaPlayer
-import sample.base.KotlinActivity
-import sample.base.TextView
-import sample.base.Window
-import java.io.File
-import java.net.InetSocketAddress
-import javax.swing.event.ChangeListener
-import com.jfoenix.controls.JFXDialog
-import javafx.fxml.FXMLLoader
-import javafx.scene.Parent
-import javafx.scene.control.*
-import javafx.scene.image.Image
-import javafx.scene.layout.*
 import javafx.scene.paint.Color
+import sample.base.KotlinActivity
+import sample.base.Window
 
-
+/**
+ * id与fx:id的区别，前者用在css中，后者用在控制层中，都需要在获取时加#
+ * @property dialogExit JFXDialog
+ */
 class MainActivity : KotlinActivity() {
 
+    val dialogExit = JFXDialog()
 
     override fun onCreate(window: Window) {
         window.title = "三国演义"
         window.isResizable = false
         window.icons.add(Image("style/image/sanguo.png"))
 
-        val dialog = JFXDialog()
-        val box = VBox()
-        box.styleClass.add("dialog")
-        box.alignment=Pos.CENTER
-        box.prefWidth=200.0
-        box.prefHeight=100.0
-        val label = Label("确定要退出吗？")
-        label.textFill = Color.BLACK
-        box.children.add(label)
-        val childBox = HBox()
-        childBox.alignment=Pos.CENTER
-        val btnCancel = JFXButton("取消")
-        val btnConfirm = JFXButton("确定")
-        btnCancel.setOnMouseClicked { dialog.close() }
-        btnConfirm.setOnMouseClicked {
-            dialog.close()
-            System.exit(0) }
-        childBox.children.add(btnCancel)
-        childBox.children.add(btnConfirm)
-        box.children.add(childBox)
-        dialog.content = box
+        val region = region("dialog")
+        region.lookup("#btnCancel").setOnMouseClicked {
+            dialogExit.close()
+        }
+        region.lookup("#btnConfirm").setOnMouseClicked {
+            System.exit(0)
+        }
+        dialogExit.content = region
 
+        //监听关闭窗口事件
         window.setOnCloseRequest {
             it.consume()
-            dialog.show(view("container") as StackPane)
+            dialogExit.show(view("container") as StackPane)
         }
+
         setContentView("sample")
         moveToCenter(640,380)
         initView()
