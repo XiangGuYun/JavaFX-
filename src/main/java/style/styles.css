@@ -34,22 +34,10 @@
     -fx-font-weight: bold;
 }
 
-#etUsername{
-    -fx-vgap: 20;
-    -fx-hgap: 20;
-}
 
 /*Flat button example */
 .jfx-button {
     -jfx-button-type: FLAT;
     -fx-background-color: white;
     -fx-text-fill: black;
-}
-
-/*Raised button example */
-.jfx-button {
-    -jfx-button-type: RAISED;
-    -fx-background-color: #000000;
-    -fx-text-fill: white;
-    -fx-font-size: 18;
 }

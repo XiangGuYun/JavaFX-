@@ -50,6 +50,12 @@ abstract class KotlinActivity:Application(),ViewHelper,ColorHelper{
         window.scene.stylesheets.add("style/styles.css")
     }
 
+    fun setContentView(name:String,width:Number,height: Number){
+        contentView = FXMLLoader.load<Parent>(javaClass.classLoader.getResource("$name.fxml"))
+        window.scene = Scene(contentView,width.toDouble(),height.toDouble())
+        window.scene.stylesheets.add("style/styles.css")
+    }
+
     abstract fun onCreate(window: Window)
 
     fun scene(name:String,width: Number,height: Number): Scene {
