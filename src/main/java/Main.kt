@@ -56,7 +56,7 @@ class Main : KotlinActivity() {
             while (true){
                 Thread.sleep(50)
                 bg.translateX=bg.translateX+1
-                println("${bg.translateX}-----$maxX--------")
+                ivEnter.rotate = ivEnter.rotate+1
             }
         }).start()
 
@@ -67,11 +67,13 @@ class Main : KotlinActivity() {
         player.play()
     }
 
+    lateinit var ivEnter: ImageView
+
     private fun initView() {
         val btn = view("box") as VBox
         val image = Image("/style/image/enter.png")
-        val iv = ImageView(image)
-        btn.children.add(iv)
+        ivEnter = ImageView(image)
+        btn.children.add(ivEnter)
         btn.setOnMouseClicked {
                 startActivity("second", 1200, 800)
                 player.stop()
