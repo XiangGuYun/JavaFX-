@@ -1,19 +1,23 @@
 .root{
     -fx-font-size: 11pt;
-    -fx-background-image: url(image/three_kindoms.jpg);
+    -fx-background-image: url(image/start.jpg);
     -fx-background-size: stretch stretch;
     -fx-background-position: center center;
 }
 
 .label{
-    -fx-text-fill: aliceblue;
+    -fx-text-fill: black;
 }
 
-.button{
-    -fx-background-color: #000000;
-    -fx-text-fill: #ffffff;
-    -fx-background-radius: 6;
+.dialog{
+    -fx-background-color: #3C3F41;
 }
+
+/*.button{*/
+    /*-fx-background-color: #000000;*/
+    /*-fx-text-fill: #ffffff;*/
+    /*-fx-background-radius: 6;*/
+/*}*/
 /*
 创建一个自定义样式
  */
