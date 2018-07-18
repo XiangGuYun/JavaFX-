@@ -1,5 +1,4 @@
 # JavaFX-ThreeKingdomsReader
-javafx2android
 
 ![](img1.png)
 
