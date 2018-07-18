@@ -72,10 +72,20 @@ abstract class KotlinActivity:Application(),ViewHelper,ColorHelper{
         return FXMLLoader.load<Region>(javaClass.classLoader.getResource("$name.fxml"))
     }
 
+    /**
+     * 添加样式文件，如果之前已经添加过，那么会替换掉之前的文件
+     * @param path String
+     */
     fun addStyle(path:String){
         window.scene.stylesheets.add("$path.css")
     }
 
+    /**
+     * 跳转到另外一个窗口
+     * @param name String
+     * @param width Number
+     * @param height Number
+     */
     fun startActivity(name:String,width: Number,height: Number){
         window.scene = scene(name,width,height)
         moveToCenter(width,height)
