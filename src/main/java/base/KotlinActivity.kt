@@ -1,5 +1,6 @@
 package sample.base
 
+import base.Window
 import com.jfoenix.controls.JFXListView
 import javafx.application.Application
 import javafx.beans.Observable
@@ -9,13 +10,14 @@ import javafx.scene.Node
 import javafx.scene.Parent
 import javafx.scene.Scene
 import javafx.scene.control.Label
+import javafx.scene.layout.Pane
 import javafx.scene.layout.Region
+import javafx.scene.media.Media
 import javafx.scene.paint.Color
 import javafx.stage.Screen
 import javafx.stage.Stage
+import javafx.stage.WindowEvent
 import java.io.File
-
-typealias Window = Stage
 
 
 abstract class KotlinActivity:Application(),ViewHelper,ColorHelper{
@@ -54,7 +56,9 @@ abstract class KotlinActivity:Application(),ViewHelper,ColorHelper{
         contentView = FXMLLoader.load<Parent>(javaClass.classLoader.getResource("$name.fxml"))
         window.scene = Scene(contentView,width.toDouble(),height.toDouble())
         window.scene.stylesheets.add("style/styles.css")
+        moveToCenter(width,height)
     }
+
 
     abstract fun onCreate(window: Window)
 
@@ -68,12 +72,13 @@ abstract class KotlinActivity:Application(),ViewHelper,ColorHelper{
         return FXMLLoader.load<Region>(javaClass.classLoader.getResource("$name.fxml"))
     }
 
-    fun setStyle(path:String){
+    fun addStyle(path:String){
         window.scene.stylesheets.add("$path.css")
     }
 
     fun startActivity(name:String,width: Number,height: Number){
         window.scene = scene(name,width,height)
+        moveToCenter(width,height)
     }
 
     fun String.pln(){
@@ -94,6 +99,14 @@ abstract class KotlinActivity:Application(),ViewHelper,ColorHelper{
        items.add(data)
     }
 
+    fun media(path:String): Media {
+        return Media(javaClass.getResource(path).toString())
+    }
+
+    fun Pane.addChild(child:Node){
+        children.add(child)
+    }
+
     companion object {
 
         @JvmStatic
@@ -101,7 +114,5 @@ abstract class KotlinActivity:Application(),ViewHelper,ColorHelper{
             Application.launch(KotlinActivity::class.java)
         }
     }
-
-
 
 }

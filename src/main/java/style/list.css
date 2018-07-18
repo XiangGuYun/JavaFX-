@@ -16,3 +16,17 @@
     -fx-background-color: #3C3F41;
     -fx-pref-height: 40;
 }
+
+#labelDialog{
+    -fx-font-size: 18;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.tvDialog{
+    -fx-text-fill: red;
+}
+
+.dialog{
+    -fx-background-color: #3C3F41;
+}
