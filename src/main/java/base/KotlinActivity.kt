@@ -17,7 +17,7 @@ import javafx.scene.paint.Color
 import javafx.stage.Screen
 import javafx.stage.Stage
 import javafx.stage.WindowEvent
-import java.io.File
+import java.io.*
 
 
 abstract class KotlinActivity:Application(),ViewHelper,ColorHelper{
@@ -95,8 +95,22 @@ abstract class KotlinActivity:Application(),ViewHelper,ColorHelper{
         println(this)
     }
 
-    fun file(path:String): File {
-        return File(javaClass.getResource(path).toURI())
+//    fun file(path:String): File {
+//        val input = javaClass.getResourceAsStream(path)
+//        val reader = input.reader()
+//        println(reader.readText())
+//        return File(javaClass.getResource(path).toURI())
+//    }
+
+    fun file(path:String): InputStreamReader {
+        val input = javaClass.getResourceAsStream(path)
+        return input.reader()
+    }
+
+    fun fileText(path:String): String {
+        val input = javaClass.getResourceAsStream(path)
+        val reader = input.reader()
+        return reader.readText()
     }
 
     fun <T> JFXListView<T>.itemClick(func:(T)->Unit){
